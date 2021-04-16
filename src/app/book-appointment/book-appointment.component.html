@@ -1,0 +1,52 @@
+<div class="container">
+    <br />
+      <h2 class="text-primary text-center" >Book Appointment</h2>
+    <br />
+    <form class="form-style" #appoint="ngForm" (ngSubmit)="appointment(appoint)">
+      <div class="form-group">
+        <label for="username">Memeber Id</label>
+        <input
+          type="text"
+          class="form-control"
+          name="memberId"
+          ngModel
+          placeholder="Enter Member Id"
+        />
+      </div>
+      <div class="form-group" >
+        <label for="">Doctor Name</label>
+        <select class="custom-select" name="docid" ngModel
+        #docid="ngModel" 
+        >
+            <option selected >Choose</option>
+            <option [value]="d.docid" *ngFor="let d of docview ">{{ d.docname | titlecase }}</option>
+            
+          </select>
+      </div>
+      <div class="form-group">
+          <label for="">Appointment Date</label>
+          <input
+            type="date"
+            class="form-control"
+            name="appointDate"
+            ngModel
+            placeholder="Select Date"
+          />
+        </div>
+        <div class="form-group">
+            <label for="">Slots</label>
+            <select class="custom-select">
+                <option selected>Choose</option>
+                <option value="1">10.00Am-11.00AM</option>
+                <option value="2">11.00Am-12.00PM</option>
+                <option value="3">12.00PM-01.00PM</option>
+                <option value="2">02.00PM-03.00PM</option>
+                <option value="3">03.00PM-04.00PM</option>
+              </select>
+          </div>
+
+  
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  

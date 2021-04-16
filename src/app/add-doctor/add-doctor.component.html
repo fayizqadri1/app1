@@ -1,0 +1,39 @@
+<div class="container">
+  <br />
+    <h2 class="text-primary text-center" >Doctor Registration</h2>
+  <br />
+  <form class="form-style" #regdoc="ngForm" (ngSubmit)="adddoctor(regdoc)">
+    <div class="form-group">
+      <label for="username">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="docName"
+        ngModel
+        placeholder="Enter Doctor Name"
+      />
+    </div>
+    <div class="form-group">
+      <label for="username">Doctor Id</label>
+      <input
+        type="text"
+        class="form-control"
+        name="docId"
+        ngModel
+        placeholder="Enter Doctor Id"
+      />
+    </div>
+    <div class="form-group">
+        <label for="username">Specialist</label>
+        <input
+          type="text"
+          class="form-control"
+          name="specialist"
+          ngModel
+          placeholder="Enter Specialist"
+        />
+      </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
