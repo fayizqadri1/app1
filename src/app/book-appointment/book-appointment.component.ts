@@ -10,7 +10,7 @@ export class BookAppointmentComponent implements OnInit {
   docview;
   constructor( private service:CurdService) { }
   appointment(appoint){
-    //this.service.addAppointment(appoint.value);
+    this.service.addAppointment(appoint.value);
     console.log(appoint.value)
 
   }

@@ -28,12 +28,19 @@ private doctor:doctor[];
 }
 
 addAppointment(data){
-  this.http.post('http://localhost:3000/api/addappointment',data).subscribe(()=>{
-    console.log('Appointment successfully booked');
+  this.http.post('http://localhost:3000/api/addappointment',data).subscribe((response)=>{
+    console.log(response);
   })
 }
 
 getdoctor():Observable<any>{
   return this.http.get('http://localhost:3000/api/getdoctor');
+}
+
+addpackage(data){
+  this.http.post('http://localhost:3000/api/addpackage',data).subscribe((response)=>{
+    console.log(response)
+  })
+  
 }
 }
