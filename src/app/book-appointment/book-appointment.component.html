@@ -10,6 +10,7 @@
           class="form-control"
           name="memberId"
           ngModel
+          (input)="memid($event.target.value)"
           placeholder="Enter Member Id"
         />
       </div>

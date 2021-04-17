@@ -14,7 +14,13 @@ export class BookAppointmentComponent implements OnInit {
     console.log(appoint.value)
 
   }
-
+  memberdetail;
+memid(value){
+  this.service.getmember(value).subscribe((response)=>{
+this.memberdetail=response["rows"]
+console.log(response)
+  })
+}
   ngOnInit(): void {
     this.service.getdoctor().subscribe((response) => {
       

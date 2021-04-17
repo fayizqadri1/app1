@@ -1,3 +1,4 @@
+import { CurdService } from './../curd.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,13 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MemberFormComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service: CurdService) { }
+pack;
 addmember(data){
-  
+  this.service.addmember(data.value);
 }
   
   ngOnInit(): void {
+    this.service.getpackage().subscribe((response)=>{
+      this.pack=response["rows"]
+    })
   }
 
 }

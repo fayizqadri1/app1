@@ -3,25 +3,24 @@
       <h2 class="text-primary text-center" >Package</h2>
     <br />
     <form class="form-style" #pack="ngForm" (ngSubmit)="package(pack)">
-        <div class="form-group">
-            <label for="">Package Name</label>
-            <select class="custom-select" name="packname" ngModel  (change)="packagename($event.target.value)" >
-                <option value="">Choose</option>
-                <option value="basic">Basic</option>
-                <option value="silver">Silver</option>
-                <option value="gold">Gold</option>
-                <option value="diamond">Diamond</option>
-                <option value="platinum">Platinum</option>
-              </select>
-          </div>
+      <div class="form-group">
+        <label for="username">Package Name</label>
+        <input
+        type="text"
+        class="form-control"
+        name="pack"
+        ngModel
+       
+        />
+      </div>
       <div class="form-group">
         <label for="username">Amount Subscribed</label>
         <input
           type="text"
           class="form-control"
           name="amount"
-          [(ngModel)]="amount"
-        readonly
+          ngModel
+        
         />
       </div>
       <div class="form-group">
@@ -30,8 +29,8 @@
             type="text"
             class="form-control"
             name="days"
-            [(ngModel)]="days"
-           readonly
+            ngModel
+          
           />
         </div>
   

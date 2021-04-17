@@ -43,4 +43,23 @@ addpackage(data){
   })
   
 }
+addmember(data){
+  this.http.post('http://localhost:3000/api/addmember',data).subscribe((response)=>{
+    console.log(response)
+  })
+}
+
+getpackage():Observable<any>{
+  return this.http.get('http://localhost:3000/api/getpackage');
+}
+
+getmember(value):Observable<any>{
+  const searchParams = {
+    params: {
+        param1: value,
+    }
+}
+  console.log(value)
+  return this.http.get('http://localhost:3000/api/getmember',searchParams)
+}
 }

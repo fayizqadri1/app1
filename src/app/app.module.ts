@@ -17,6 +17,7 @@ import { BookAppointmentComponent } from './book-appointment/book-appointment.co
 import { HttpClientModule } from '@angular/common/http';
 import { MemberFormComponent } from './member-form/member-form.component';
 import { PackageComponent } from './package/package.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +26,8 @@ import { PackageComponent } from './package/package.component';
   AddDoctorComponent,
   BookAppointmentComponent,
   MemberFormComponent,
-  PackageComponent
+  PackageComponent,
+
  
   ],
   imports: [
