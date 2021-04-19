@@ -19,6 +19,10 @@ import { MemberFormComponent } from './member-form/member-form.component';
 import { PackageComponent } from './package/package.component';
 import { ViewAppointmewntComponent } from './view-appointmewnt/view-appointmewnt.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ViewMemberComponent } from './view-member/view-member.component';
+import { ViewDoctorComponent } from './view-doctor/view-doctor.component';
+import { ViewPackageComponent } from './view-package/view-package.component';
+import { CareCalenderComponent } from './care-calender/care-calender.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +33,10 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   MemberFormComponent,
   PackageComponent,
   ViewAppointmewntComponent,
+  ViewMemberComponent,
+  ViewDoctorComponent,
+  ViewPackageComponent,
+  CareCalenderComponent,
 
  
   ],

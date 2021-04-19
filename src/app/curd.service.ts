@@ -72,4 +72,16 @@ getmember(value):Observable<any>{
   console.log(value)
   return this.http.get('http://localhost:3000/api/getmember',searchParams).pipe(take(1))
 }
+
+viewMember():Observable<any>{
+  return this.http.get('http://localhost:3000/api/viewmember');
+  
+}
+viewdoctor():Observable<any>{
+  return this.http.get('http://localhost:3000/api/viewdoctor');
+}
+
+viewpackage():Observable<any>{
+ return  this.http.get("http://localhost:3000/api/viewpackage");
+}
 }

@@ -13,9 +13,10 @@
         <th scope="col">Appointment Date</th>
         <th scope="col">Phone Number</th>
         <th scope="col">Doctor Name</th>
-        <th scope="col">Specialist</th>
+   
         <th scope="col">Duration</th>
         <th >Package Name</th>
+        
       </tr>
     </thead>
     <tbody *ngFor="let d of viewappointment">
@@ -39,17 +40,18 @@
               </td>
 
               <td>
-                {{d.docname}}
+                {{d.docname}}({{d.specialist}})
               </td>
-              <td>
-                {{d.specialist}}
-              </td>
+              
 
               <td>
                 {{d.duration}}
               </td>
               <td>
                 {{d.packagename}}
+              </td>
+              <td>
+                <a routerLink="/carecalender">Care Calender</a>
               </td>
               
 

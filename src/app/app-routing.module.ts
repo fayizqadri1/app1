@@ -1,3 +1,7 @@
+import { CareCalenderComponent } from './care-calender/care-calender.component';
+import { ViewPackageComponent } from './view-package/view-package.component';
+import { ViewDoctorComponent } from './view-doctor/view-doctor.component';
+import { ViewMemberComponent } from './view-member/view-member.component';
 import { ViewAppointmewntComponent } from './view-appointmewnt/view-appointmewnt.component';
 import { MemberFormComponent } from './member-form/member-form.component';
 import { PackageComponent } from './package/package.component';
@@ -16,7 +20,11 @@ const routes: Routes = [
   {path:'bookappointment', component:BookAppointmentComponent},
   {path:'package',component:PackageComponent},
   {path: 'memberform', component:MemberFormComponent},
-  {path: 'viewappointment',component:ViewAppointmewntComponent}
+  {path: 'viewappointment',component:ViewAppointmewntComponent},
+  {path: 'viewmember', component:ViewMemberComponent},
+  {path: 'viewdoctor',component:ViewDoctorComponent},
+  {path:'viewpackage',component:ViewPackageComponent},
+  {path:'carecalender',component:CareCalenderComponent}
 
 ];
 
