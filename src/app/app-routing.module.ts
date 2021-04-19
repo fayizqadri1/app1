@@ -13,28 +13,25 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-
 const routes: Routes = [
-  {path: '',component:LoginComponent},
-  {path:'dashboard',component:DashboardComponent},
-  {path: 'adddoctor', component:AddDoctorComponent},
-  {path:'bookappointment', component:BookAppointmentComponent},
-  {path:'package',component:PackageComponent},
-  {path: 'memberform', component:MemberFormComponent},
-  {path: 'viewappointment',component:ViewAppointmewntComponent},
+  { path: '', component: LoginComponent },
+  { path: 'dashboard', component: DashboardComponent },
+  { path: 'adddoctor', component: AddDoctorComponent },
+  { path: 'bookappointment', component: BookAppointmentComponent },
+  { path: 'package', component: PackageComponent },
+  { path: 'memberform', component: MemberFormComponent },
+  { path: 'viewappointment', component: ViewAppointmewntComponent },
 
-  {path: 'viewmember', component:ViewMemberComponent},
-  {path: 'viewdoctor',component:ViewDoctorComponent},
-  {path:'viewpackage',component:ViewPackageComponent},
-  {path:'carecalender',component:CareCalenderComponent},
+  { path: 'viewmember', component: ViewMemberComponent },
+  { path: 'viewdoctor', component: ViewDoctorComponent },
+  { path: 'viewpackage', component: ViewPackageComponent },
+  { path: 'carecalender', component: CareCalenderComponent },
 
-  {path: 'viewdoctors',component:ViewDoctorComponent}
-
-
+  { path: 'viewdoctors', component: ViewDoctorComponent },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
