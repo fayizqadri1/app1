@@ -225,17 +225,24 @@ app.get("/api/getappointment", (req, res) => {
   } catch (error) {}
 
 });
-app.get("/api/viewmember",(req,res)=>{
-  try {
-    const getdoc = pool.query("select memid, membername,gender,birth_date,memActive,phonenumber, packagename from memberviewone inner join packageview on memberviewone.packageid=packageview.packageid order by memid ", (error, data) => {
-      if (error) {
-        throw error;
-      }
-     return res.status(200).json(data);
-    });
-  } catch (error) {}
 
-});
+// app.get("/api/viewmember",(req,res)=>{
+//   try {
+//     const getdoc = pool.query("select memid, membername,gender,birth_date,memActive,phonenumber, packagename from memberviewone inner join packageview on memberviewone.packageid=packageview.packageid order by memid ", (error, data) => {
+
+  app.get("/api/viewmember",(req,res)=>{
+    try {
+      const getdoc = pool.query("select memid, membername,gender,birth_date,memActive,phonenumber, packagename from memberviewone inner join packageview on memberviewone.packageid=packageview.packageid order by memid ", (error, data) => {
+        if (error) {
+          throw error;
+        }
+       return res.status(200).json(data);
+      });
+    } catch (error) {}
+  
+  });
+  
+
 app.get("/api/viewdoctor",(req,res)=>{
   try {
     const getdoc = pool.query("select * from doctor ", (error, data) => {
@@ -259,6 +266,5 @@ app.get("/api/viewpackage",(req,res)=>{
   } catch (error) {}
 
 });
-
 
 module.exports = app;

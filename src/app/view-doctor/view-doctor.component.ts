@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-doctor.component.css']
 })
 export class ViewDoctorComponent implements OnInit {
+
 viewdoctor;
   constructor(private service:CurdService) { }
 
@@ -14,7 +15,7 @@ viewdoctor;
   ngOnInit(): void {
     this.service.viewdoctor().subscribe((response)=>{
       this.viewdoctor=response["rows"];
-     
+     console.log(response)
       
   })
 }

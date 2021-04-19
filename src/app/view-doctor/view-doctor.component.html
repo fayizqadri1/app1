@@ -1,7 +1,10 @@
+
 <div class="container">
     <br />
       <h2 class="text-primary text-center" >View Doctor List</h2>
-    <br />
+
+
+
 
 <table class="table table-striped table-bordered">
     <thead>
@@ -10,26 +13,30 @@
         <th scope="col">Doctor ID</th>
         <th scope="col">Doctor Name</th>
         <th scope="col">Specialist</th>
+
         <th>Status</th>
         
       </tr>
     </thead>
+ 
     <tbody *ngFor="let d of viewdoctor">
         <tr>
-            <td>
-              
+            <td>             
                {{d.docid}}
               </td>
               <td>
                 {{d.docname}}
+
               </td>
               <td>
                 {{d.specialist}}
               </td>
+
               <td >{{d.active && 'Active' || 'Block'}}</td>
 
             
              
+
               
 
         </tr>
@@ -37,3 +44,4 @@
     </tbody>
   </table>
 </div>
+
