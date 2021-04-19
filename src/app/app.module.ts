@@ -19,6 +19,7 @@ import { MemberFormComponent } from './member-form/member-form.component';
 import { PackageComponent } from './package/package.component';
 import { ViewAppointmewntComponent } from './view-appointmewnt/view-appointmewnt.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ViewDoctorComponent } from './view-doctor/view-doctor.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,6 +30,7 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
   MemberFormComponent,
   PackageComponent,
   ViewAppointmewntComponent,
+  ViewDoctorComponent,
 
  
   ],

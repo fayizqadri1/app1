@@ -53,6 +53,10 @@ getappointment():Observable<any>{
   return this.http.get('http://localhost:3000/api/getappointment');
 }
 
+getdocdata():Observable<any>{
+  return this.http.get('http://localhost:3000/api/getdoctable');
+}
+
 addmember(data){
   this.http.post('http://localhost:3000/api/addmember',data).subscribe((response)=>{
     console.log(response)

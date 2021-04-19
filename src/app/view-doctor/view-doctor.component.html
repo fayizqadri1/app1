@@ -1,0 +1,40 @@
+<p>view-doctor works!</p>
+
+<div class="container">
+    <br />
+      <h2 class="text-primary text-center" >View Doctor</h2>
+    <br />
+
+<table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        
+        <th scope="col">Doctor ID</th>
+        <th scope="col">Doctor Name</th>
+        <th scope="col">Specialist</th>
+        <!-- <th scope="col">Specialist</th> -->
+        
+      </tr>
+    </thead>
+    <tbody *ngFor="let d of viewdoctors">
+        <tr>
+            <td>             
+               {{d.docid}}
+              </td>
+              <td>
+                {{d.docnamename}}
+              </td>
+              <td>
+                {{d.specialist}}
+              </td>
+
+              
+
+              
+              
+
+        </tr>
+      
+    </tbody>
+  </table>
+</div>

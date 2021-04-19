@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ViewDoctorComponent } from './view-doctor/view-doctor.component';
 
 const routes: Routes = [
   {path: '',component:LoginComponent},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path:'bookappointment', component:BookAppointmentComponent},
   {path:'package',component:PackageComponent},
   {path: 'memberform', component:MemberFormComponent},
-  {path: 'viewappointment',component:ViewAppointmewntComponent}
+  {path: 'viewappointment',component:ViewAppointmewntComponent},
+  {path: 'viewdoctors',component:ViewDoctorComponent}
 
 ];
 

@@ -225,4 +225,15 @@ app.get("/api/getappointment", (req, res) => {
   } catch (error) {}
 
 });
+app.get("/api/getdoctable", (req, res) => {
+  try {
+    const getdoc = pool.query("SELECT docid, docname, specialist", (error, data) => {
+      if (error) {
+        throw error;
+      }
+     return res.status(200).json(data);
+    });
+  } catch (error) {}
+
+});
 module.exports = app;
