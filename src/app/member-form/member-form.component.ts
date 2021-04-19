@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { CurdService } from './../curd.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -10,8 +11,12 @@ export class MemberFormComponent implements OnInit {
 
   constructor(private service: CurdService) { }
 pack;
-addmember(data){
-  this.service.addmember(data.value);
+data;
+addmember(mem :NgForm){
+  this.data=mem.value;
+ this.service.addmember(this.data);
+ console.log(this.data)
+ mem.reset()
 }
   
   ngOnInit(): void {

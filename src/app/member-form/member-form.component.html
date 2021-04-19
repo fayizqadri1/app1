@@ -29,7 +29,7 @@
         <select class="custom-select" name="packageid" ngModel
         #docid="ngModel" 
         >
-            <option  >Choose</option>
+            <option value="" >Choose</option>
             <option [value]="d.packageid" *ngFor="let d of pack ">{{ d.packagename | titlecase }}</option>
             
           </select>
@@ -37,7 +37,7 @@
       <div class="form-group">
         <label for="">Gender</label>
         <select class="custom-select" name="gender" ngModel>
-            <option selected>Choose</option>
+            <option value="">Choose</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
             <option value="other">Other</option>

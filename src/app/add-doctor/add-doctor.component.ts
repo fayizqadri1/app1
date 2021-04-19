@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { CurdService } from './../curd.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 export class AddDoctorComponent implements OnInit {
 
   constructor(private service:CurdService) { }
-  adddoctor(docReg){
+  data;
+  adddoctor(docReg: NgForm){
+    this.data=docReg.value
     //śconsole.log(docReg.value);
-    this.service.addDoctor(docReg.value)
+    this.service.addDoctor(this.data)
+    docReg.reset()
+
 
   }
   ngOnInit(): void {

@@ -1,3 +1,4 @@
+import { ViewAppointmewntComponent } from './view-appointmewnt/view-appointmewnt.component';
 import { MemberFormComponent } from './member-form/member-form.component';
 import { PackageComponent } from './package/package.component';
 import { BookAppointmentComponent } from './book-appointment/book-appointment.component';
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'adddoctor', component:AddDoctorComponent},
   {path:'bookappointment', component:BookAppointmentComponent},
   {path:'package',component:PackageComponent},
-  {path: 'memberform', component:MemberFormComponent}
+  {path: 'memberform', component:MemberFormComponent},
+  {path: 'viewappointment',component:ViewAppointmewntComponent}
 
 ];
 

@@ -55,7 +55,7 @@ app.post("/api/adddoctor", (req, res) => {
       })
       .catch(() => {
         return res.status(201).json({
-          message: "This is an error!",
+          message: "There is an error!",
         });
       });
   } catch (err) {
@@ -72,23 +72,25 @@ app.post("/api/addappointment", (req, res) => {
       const docid = req.body.docid;
       const appointdate = req.body.appointDate;
     const slots= req.body.duration;
+    const packageid=req.body.packageid
+
     // const {,,,slots}=req.body;
       console.log(memberid);
       //const {doc,doctorid,doctorspecialist} = req.body;
       const newdoctor = pool
         .query(
-          "INSERT INTO appointment (memberid,doctorid,appointmentdate,slots) VALUES ($1,$2,$3,$4) RETURNING *",
-          [memberid, docid,appointdate,slots]
+          "INSERT INTO appointment (memberid,docid,packageid,appointdate,duration) VALUES ($1,$2,$3,$4,$5) RETURNING *",
+          [memberid, docid,packageid,appointdate,slots]
         )
         .then(() => {
           console.log("inserted");
           res.status(201).json({
-            message: "doctor added",
+            message: "appointment added",
           });
         })
         .catch(() => {
           return res.status(201).json({
-            message: "This is an error!",
+            message: "There is an error!",
           });
         });
     } catch (err) {
@@ -118,12 +120,12 @@ app.post("/api/addappointment", (req, res) => {
         .then(() => {
           console.log("inserted");
           res.status(201).json({
-            message: "doctor added",
+            message: "package added",
           });
         })
         .catch(() => {
           return res.status(201).json({
-            message: "This is an error!",
+            message: "There is an error!",
           });
         });
     } catch (err) {
@@ -148,19 +150,20 @@ app.post("/api/addmember", (req, res) => {
     // ('abc','male','10/1/1990',7006580010)
       //const {doc,doctorid,doctorspecialist} = req.body;
       const newdoctor = pool
-        .query(
+        .query( 
           "INSERT INTO  memberviewone (packageid,membername,gender,birth_date,phoneNumber) VALUES ($1,$2,$3,$4,$5) RETURNING *",
           [packageid,membername, memebergender,memberdob,phoneno]
         )
+
         .then(() => {
           console.log("inserted");
           res.status(201).json({
-            message: "doctor added",
+            message: "member added",
           });
         })
         .catch(() => {
           return res.status(201).json({
-            message: "This is an error!",
+            message: "There is an error!",
           });
         });
     } catch (err) {
@@ -195,23 +198,31 @@ app.post("/api/addmember", (req, res) => {
   });
   app.get("/api/getmember", (req, res) => {
     const id = req.query.param1;
-    console.log(id)
-      
-  //   try {
-  //     const getid  =  pool.query("SELECT * FROM memberviewone WHERE MemId = $1",[id]);
-  //  console.log(getid)
-  //   res.json(getid);
+    console.log(id) 
+        
   
-  // } catch (error) {
-  //   console.error(error.message);
-  // }
   try {
-    const getdoc = pool.query("SELECT * from memberviewone where memid=$1"[id], (error, data) => {
+  
+    const getdoc = pool.query(String(`SELECT * from memberviewone where memid=${id}`), (error, data) => {
       if (error) {
         throw error;
       }
      return res.status(200).json(data);
     });
   } catch (error) {}
+});
+
+
+
+app.get("/api/getappointment", (req, res) => {
+  try {
+    const getdoc = pool.query("SELECT appointmentid, appointdate, duration, docname, specialist,membername,birth_date,phonenumber,packagename,packagedays FROM appointment INNER JOIN doctor ON appointment.docid = doctor.docid Inner join memberviewone on appointment.memberid = memberviewone.memid inner join packageview on appointment.packageid =packageview.packageid order by appointmentid", (error, data) => {
+      if (error) {
+        throw error;
+      }
+     return res.status(200).json(data);
+    });
+  } catch (error) {}
+
 });
 module.exports = app;

@@ -1,18 +1,24 @@
+import { take } from 'rxjs/operators';
 import { doctor } from './models/doctor.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+import {MatSnackBar} from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root'
 })
 export class CurdService {
 private doctor:doctor[];
-  constructor( private http:HttpClient) { }
+  constructor( private http:HttpClient,
+    private snackBar: MatSnackBar
+    ) { }
   getdoc(){
     this.http.get<{message:string, doctor:doctor}>('http://localhost:3000/api/adddoctor')
     .subscribe((data)=>{
       console.log(data);
+      
+
+     
       // this.doctor: data.doctor
       
 
@@ -30,6 +36,7 @@ private doctor:doctor[];
 addAppointment(data){
   this.http.post('http://localhost:3000/api/addappointment',data).subscribe((response)=>{
     console.log(response);
+    
   })
 }
 
@@ -41,8 +48,11 @@ addpackage(data){
   this.http.post('http://localhost:3000/api/addpackage',data).subscribe((response)=>{
     console.log(response)
   })
-  
+} 
+getappointment():Observable<any>{
+  return this.http.get('http://localhost:3000/api/getappointment');
 }
+
 addmember(data){
   this.http.post('http://localhost:3000/api/addmember',data).subscribe((response)=>{
     console.log(response)
@@ -60,6 +70,6 @@ getmember(value):Observable<any>{
     }
 }
   console.log(value)
-  return this.http.get('http://localhost:3000/api/getmember',searchParams)
+  return this.http.get('http://localhost:3000/api/getmember',searchParams).pipe(take(1))
 }
 }
