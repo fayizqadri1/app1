@@ -1,4 +1,5 @@
 <div class="container">
+  <app-navbar></app-navbar>
     <br />
       <h2 class="text-primary text-center" >Package</h2>
     <br />
@@ -10,12 +11,14 @@
         class="form-control"
         name="pack"
         ngModel
+        required
        
         />
       </div>
       <div class="form-group">
         <label for="username">Amount Subscribed</label>
         <input
+        required
           type="text"
           class="form-control"
           name="amount"
@@ -30,7 +33,7 @@
             class="form-control"
             name="days"
             ngModel
-          
+          required
           />
         </div>
   

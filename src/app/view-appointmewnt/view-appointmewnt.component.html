@@ -1,62 +1,53 @@
 <div class="container">
-    <br />
-      <h2 class="text-primary text-center" >View appointment</h2>
-    <br />
+  <app-navbar></app-navbar>
+  <br />
+  <h2 class="text-primary text-center">View appointment</h2>
+  <br />
 
-<table class="table table-striped table-bordered">
+  <table class="table table-striped table-bordered">
     <thead>
       <tr>
-        
         <th scope="col">Appointment ID</th>
         <th scope="col">Member Name</th>
         <th scope="col">DOB</th>
         <th scope="col">Appointment Date</th>
         <th scope="col">Phone Number</th>
         <th scope="col">Doctor Name</th>
-   
         <th scope="col">Duration</th>
-        <th >Package Name</th>
-        
+        <th>Package Name</th>
       </tr>
     </thead>
     <tbody *ngFor="let d of viewappointment">
-        <tr>
-            <td>
-              
-               {{d.appointmentid}}
-              </td>
-              <td>
-                {{d.membername}}
-              </td>
-              <td>
-                {{d.birth_date | date}}
-              </td>
+      <tr>
+        <td>
+          {{ d.appointmentid }}
+        </td>
+        <td>
+          {{ d.membername }}
+        </td>
+        <td>
+          {{ d.birth_date | date }}
+        </td>
 
-              <td>
-                {{d.appointdate |date}}
-              </td>
-              <td>
-                {{d.phonenumber}}
-              </td>
+        <td>
+          {{ d.appointdate | date }}
+        </td>
+        <td>
+          {{ d.phonenumber }}
+        </td>
 
-              <td>
-                {{d.docname}}      ({{d.specialist}})
-              </td>
-              
+        <td>{{ d.docname }} ({{ d.specialist }})</td>
 
-              <td>
-                {{d.duration}}
-              </td>
-              <td>
-                {{d.packagename}}
-              </td>
-              <td>
-                <a routerLink="/carecalender">Care Calender</a>
-              </td>
-              
-
-        </tr>
-      
+        <td>
+          {{ d.duration }}
+        </td>
+        <td>
+          {{ d.packagename }}
+        </td>
+        <td>
+          <a routerLink="/carecalender">Care Calender</a>
+        </td>
+      </tr>
     </tbody>
   </table>
 </div>
