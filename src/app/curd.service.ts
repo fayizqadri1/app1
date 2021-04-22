@@ -2,7 +2,7 @@ import { take } from 'rxjs/operators';
 import { doctor } from './models/doctor.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { observable, Observable } from 'rxjs';
 import { SnackbarService } from 'ngx-snackbar';
 
 @Injectable({
@@ -138,5 +138,33 @@ export class CurdService {
 
   viewpackage(): Observable<any> {
     return this.http.get('http://localhost:3000/api/viewpackage');
+  }
+
+  servicePlan(data){
+    this.http
+    .post<{ message: string }>(
+      'http://localhost:3000/api/addserviceplan',
+      data
+    )
+    .subscribe((response) => {
+      console.log(response);
+      this.snackbar.add({
+        msg: response.message,
+        background: '#ffcccb',
+        color: 'black',
+        timeout: 8000,
+        action: {
+          text: 'Close',
+          color: 'red',
+        },
+      });
+    });
+
+   
+  
+  }
+
+  getServicePlan(): Observable<any> {
+    return this.http.get('http://localhost:3000/api/getserviceplan');
   }
 }

@@ -26,6 +26,8 @@ import { ViewPackageComponent } from './view-package/view-package.component';
 import { CareCalenderComponent } from './care-calender/care-calender.component';
 import { SnackbarModule } from 'ngx-snackbar';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ServicePlanComponent } from './service-plan/service-plan.component';
+import { ViewServicePlanComponent } from './view-service-plan/view-service-plan.component';
 
 
 
@@ -44,6 +46,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   PackageComponent,
   ViewAppointmewntComponent,
   NavbarComponent,
+  ServicePlanComponent,
+  ViewServicePlanComponent,
 
   ],
   imports: [

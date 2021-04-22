@@ -242,4 +242,44 @@ app.get("/api/viewpackage", (req, res) => {
   } catch (error) {}
 });
 
+app.post("/api/addserviceplan", (req, res) => {
+  const package = req.body;
+  console.log(package);
+  try {
+ 
+
+
+     const careplan =req.body.careplan;
+     const carecenter= req.body.carecenter
+    const newdoctor = pool
+      .query(
+        "INSERT INTO  careplan (careplan,carecenter) VALUES ($1,$2) RETURNING *",
+        [careplan, carecenter]
+      )
+
+      .then(() => {
+        console.log("inserted");
+        res.status(201).json({
+          message: "Serice Has Been Added",
+        });
+      })
+      .catch(() => {
+        return res.status(201).json({
+          message: "There is an error!",
+        });
+      });
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+app.get("/api/getserviceplan", (req, res) => {
+  try {
+    const getdoc = pool.query("select * from careplan ", (error, data) => {
+      if (error) {
+        throw error;
+      }
+      return res.status(200).json(data);
+    });
+  } catch (error) {}
+});
 module.exports = app;

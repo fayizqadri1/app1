@@ -1,3 +1,5 @@
+import { ViewServicePlanComponent } from './view-service-plan/view-service-plan.component';
+import { ServicePlanComponent } from './service-plan/service-plan.component';
 import { CareCalenderComponent } from './care-calender/care-calender.component';
 import { ViewPackageComponent } from './view-package/view-package.component';
 import { ViewDoctorComponent } from './view-doctor/view-doctor.component';
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'carecalender', component: CareCalenderComponent },
 
   { path: 'viewdoctors', component: ViewDoctorComponent },
+  {path: 'serviceplan',component:ServicePlanComponent},
+  {path:'viewserviceplan',component:ViewServicePlanComponent}
 ];
 
 @NgModule({
