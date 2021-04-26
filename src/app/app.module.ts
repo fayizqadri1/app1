@@ -28,6 +28,7 @@ import { SnackbarModule } from 'ngx-snackbar';
 import { NavbarComponent } from './navbar/navbar.component';
 import { ServicePlanComponent } from './service-plan/service-plan.component';
 import { ViewServicePlanComponent } from './view-service-plan/view-service-plan.component';
+import { OperationalStepsComponent } from './operational-steps/operational-steps.component';
 
 
 
@@ -48,6 +49,7 @@ import { ViewServicePlanComponent } from './view-service-plan/view-service-plan.
   NavbarComponent,
   ServicePlanComponent,
   ViewServicePlanComponent,
+  OperationalStepsComponent,
 
   ],
   imports: [

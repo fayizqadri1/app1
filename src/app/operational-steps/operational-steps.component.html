@@ -1,0 +1,124 @@
+
+<div class="container">
+    <app-navbar></app-navbar>
+    <br />
+      <h2 class="text-primary text-center" >Operational Steps</h2>
+    <br />
+    <form class="form-style" #activite="ngForm" (ngSubmit)="activites(activite)">
+
+        <div class="form-group" >
+            <label for="">Service Plan</label>
+            <select class="custom-select" name="serviceplanid" ngModel
+            #docid="ngModel" 
+            >
+                <option value="" >Choose</option>
+                <option [value]="d.monthplan" *ngFor="let d of serviceplan ">{{ d.careplan | titlecase }}</option>
+                
+              </select>
+          </div>
+      <div class="form-group">
+        <label for="username">Activites</label>
+        <input
+          type="text"
+          class="form-control"
+          name="activites"
+          ngModel
+          required
+          placeholder="Enter the Activites Name"
+        />
+      </div>
+      <div class="form-group">
+        <label for="">Bridge Communication Code</label>
+        <select class="custom-select" name="bc" ngModel>
+            <option value="">Choose</option>
+            <option value="bc1">BC1</option>
+            <option value="bc2">BC2</option>
+            <option value="bc3">BC3</option>
+            <option value="bc4">BC4</option>
+            <option value="bc5">BC5</option>
+            <option value="bc7">BC7</option>
+            <option value="bc8">BC8</option>
+            <option value="bc9">BC9</option>
+            <option value="bc10">BC10</option>
+            <option value="bc11">BC11</option>
+            <option value="bc12">BC12</option>
+            <option value="bc13">BC13</option>
+          </select>
+      </div>
+
+      <div class="form-group">
+        <label for="">PCM Code</label>
+        <select class="custom-select" name="pcm" ngModel>
+            <option value="">Choose</option>
+            <option value="pcm1.1">PCM 1.1</option>
+            <option value="pcm1.2">PCM 1.2</option>
+            <option value="pcm1.3">PCM 1.3</option>
+            <option value="pcm1.4">PCM 1.4</option>
+            <option value="pcm2.1">PCM 2.1</option>
+            <option value="pcm3.1">PCM 3.1</option>
+            <option value="pcm4.1">PCM 4.1</option>
+            <option value="pcm5.1">PCM 5.1</option>
+           
+          </select>
+      </div>
+      <div class="form-group">
+        <label for="username">Substeps</label>
+        <input
+          type="text"
+          class="form-control"
+          name="substeps"
+          ngModel
+          
+          placeholder="Enter Substeps"
+        />
+      </div>
+      <div class="form-group">
+          <label for="username">How it is performed</label>
+          <input
+            type="text"
+            class="form-control"
+            name="howitisperformed"
+            ngModel
+           
+            
+          />
+        </div>
+        <div class="form-group">
+            <label for="username">Deliverables</label>
+            <input
+              type="text"
+              class="form-control"
+              name="deliverables"
+              ngModel
+             
+              
+            />
+          </div>
+          <div class="form-group">
+            <label for="username">Service Planned From The Date Of Registration</label>
+            <input
+              type="text"
+              class="form-control"
+              name="serviceplannedondateofreg"
+              ngModel
+             
+              
+            />
+          </div>
+          <div class="form-group">
+            <label for="username">Date Planned On Joining</label>
+            <input
+              type="text"
+              class="form-control"
+              name="serviceplannedondateofreg"
+              ngModel
+             
+              
+            />
+          </div>
+          
+
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+  
