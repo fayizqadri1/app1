@@ -1,3 +1,4 @@
+import { NgForm } from '@angular/forms';
 import { CurdService } from './../curd.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,8 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OperationalStepsComponent implements OnInit {
 serviceplan;
+data;
   constructor(private service: CurdService) { }
-  activites(activite){}
+  activites(formData: NgForm){
+    this.data=formData.value;
+    this.service.addoperationalsteps(this.data);
+    console.log(this.data);
+    formData.resetForm();
+  }
 
   ngOnInit(): void {
     this.service.getServicePlan().subscribe((response)=>{

@@ -167,4 +167,26 @@ export class CurdService {
   getServicePlan(): Observable<any> {
     return this.http.get('http://localhost:3000/api/getserviceplan');
   }
+
+  addoperationalsteps(data){
+    this.http
+    .post<{ message: string }>(
+      'http://localhost:3000/api/addoperationalsteps',
+      data
+    )
+    .subscribe((response) => {
+      console.log(response);
+      this.snackbar.add({
+        msg: response.message,
+        background: '#ffcccb',
+        color: 'black',
+        timeout: 8000,
+        action: {
+          text: 'Close',
+          color: 'red',
+        },
+      });
+    });
+    
+  }
 }

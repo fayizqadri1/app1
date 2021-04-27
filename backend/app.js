@@ -282,4 +282,46 @@ app.get("/api/getserviceplan", (req, res) => {
     });
   } catch (error) {}
 });
+
+
+
+app.post("/api/addoperationalsteps", (req, res) => {
+  const package = req.body;
+  console.log(package);
+  try {
+ 
+
+
+     const serviceplanid =req.body.serviceplanid;
+     const activites= req.body.activites;
+     const bc =req.body.bc;
+     const pcm= req.body.pcm;
+     const substeps =req.body.substeps;
+     const howitisperformed= req.body.howitisperformed;
+     const deliverables=req.body.deliverables;
+     const serviceplannedondateofreg=req.body.serviceplannedondateofreg;
+
+     console.log(serviceplannedondateofreg)
+    const newdoctor = pool
+      .query(
+        "INSERT INTO  operationalsteps(serviceplanid,activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg) VALUES ($1,$2,$3,$4,$5,$6,$7,$8) RETURNING *",
+        [serviceplanid, activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg]
+      )
+
+      .then(() => {
+        console.log("inserted");
+        res.status(201).json({
+          message: "Serice Has Been Added",
+        });
+      })
+      .catch(() => {
+        return res.status(201).json({
+          message: "There is an error!",
+        });
+      });
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
 module.exports = app;
