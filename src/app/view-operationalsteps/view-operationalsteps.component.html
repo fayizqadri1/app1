@@ -1,0 +1,63 @@
+<div class="container">
+    <app-navbar></app-navbar>
+    <br />
+    <h2 class="text-primary text-center"> Operational Steps </h2>
+    <br />
+
+    <div class="form-group" >
+        <label for="">Service Plan</label>
+        <select class="custom-select" name="serviceplanid" ngModel (change)="operational($event.target.value)"
+        #operationalvalue="ngModel" 
+        >
+            <option value="" >Choose</option>
+            <option [value]="d.monthplan" *ngFor="let d of serviceplan ">{{ d.careplan | titlecase }}</option>
+            
+          </select>
+      </div>
+  
+      <br>
+      <br>
+    <table class="table table-striped table-bordered" *ngIf="viewoperationalSteps">
+      <thead>
+        <tr>
+          <th scope="col">Bridge Communication Codes</th>
+          <th scope="col">PCM Codes</th>
+          <th scope="col">Activities</th>
+          <th scope="col">Substeps</th>
+          <th scope="col">How it is Performed</th>
+          <th scope="col">Deliverables </th>
+          <th scope="col">Services Planned from the date of registration</th>
+          
+        </tr>
+      </thead>
+      <tbody *ngFor="let d of viewoperationalSteps">
+        <tr>
+          <td>
+            {{ d.bc | uppercase}}
+          </td>
+          <td>
+            {{ d.pcm | uppercase}}
+          </td>
+         
+  
+          <td>
+            {{ d.activites | titlecase}}
+          </td>
+          <td>
+            {{ d.substeps |titlecase}}
+          </td>
+  
+          <td>{{ d.howitisperformed |titlecase}} </td>
+  
+          <td>
+            {{ d.deliverables |titlecase}}
+          </td>
+          <td>
+            {{ d.serviceplannedondateofreg |number}}
+          </td>
+          
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

@@ -189,4 +189,17 @@ export class CurdService {
     });
     
   }
+
+  getOperationalSteps(value): Observable<any> {
+    const searchParams = {
+      params: {
+        servicepid: value,
+      },
+    };
+    return this.http
+      .get('http://localhost:3000/api/getOperationalSteps', searchParams)
+      .pipe(take(1));
+  }
+
+ 
 }

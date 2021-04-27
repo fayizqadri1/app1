@@ -1,3 +1,4 @@
+import { ViewOperationalstepsComponent } from './view-operationalsteps/view-operationalsteps.component';
 import { OperationalStepsComponent } from './operational-steps/operational-steps.component';
 import { ViewServicePlanComponent } from './view-service-plan/view-service-plan.component';
 import { ServicePlanComponent } from './service-plan/service-plan.component';
@@ -33,7 +34,8 @@ const routes: Routes = [
   { path: 'viewdoctors', component: ViewDoctorComponent },
   {path: 'serviceplan',component:ServicePlanComponent},
   {path:'viewserviceplan',component:ViewServicePlanComponent},
-  {path:'operationalstep',component:OperationalStepsComponent}
+  {path:'operationalstep',component:OperationalStepsComponent},
+  {path:'viewoperationalsteps',component:ViewOperationalstepsComponent}
 ];
 
 @NgModule({

@@ -29,6 +29,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { ServicePlanComponent } from './service-plan/service-plan.component';
 import { ViewServicePlanComponent } from './view-service-plan/view-service-plan.component';
 import { OperationalStepsComponent } from './operational-steps/operational-steps.component';
+import { ViewOperationalstepsComponent } from './view-operationalsteps/view-operationalsteps.component';
 
 
 
@@ -50,6 +51,7 @@ import { OperationalStepsComponent } from './operational-steps/operational-steps
   ServicePlanComponent,
   ViewServicePlanComponent,
   OperationalStepsComponent,
+  ViewOperationalstepsComponent,
 
   ],
   imports: [

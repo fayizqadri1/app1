@@ -14,7 +14,9 @@
         <th scope="col">DOB</th>
         <th scope="col">Phone Number</th>
         <th>Package Name</th>
+        <th>Date of Joining</th>
         <th>Status</th>
+        <th></th>
         
       </tr>
     </thead>
@@ -38,9 +40,12 @@
                 {{d.phonenumber}}
               </td>
               <td>{{d.packagename}}</td>
+              <td>{{d.memcreated_on | date}}</td>
 
               <td >{{d.memactive && 'Active' || 'Block'}}</td>
-              
+              <td>
+                <a routerLink="/carecalender">Care Calender</a>
+              </td>
 
         </tr>
       

@@ -209,7 +209,7 @@ app.get("/api/getappointment", (req, res) => {
 app.get("/api/viewmember", (req, res) => {
   try {
     const getdoc = pool.query(
-      "select memid, membername,gender,birth_date,memActive,phonenumber, packagename from memberviewone inner join packageview on memberviewone.packageid=packageview.packageid order by memid ",
+      "select memid, membername,gender,birth_date,memcreated_on,memActive,phonenumber, packagename from memberviewone inner join packageview on memberviewone.packageid=packageview.packageid order by memid ",
       (error, data) => {
         if (error) {
           throw error;
@@ -324,4 +324,23 @@ app.post("/api/addoperationalsteps", (req, res) => {
   }
 });
 
+
+
+  app.get("/api/getOperationalSteps", (req, res) => {
+    const id = req.query.servicepid;
+    console.log(id);
+  
+    try {
+      const getdoc = pool.query(
+        String(`SELECT * from operationalsteps where serviceplanid=${id}`),
+        (error, data) => {
+          if (error) {
+            throw error;
+          }
+          return res.status(200).json(data);
+        }
+      );
+    } catch (error) {}
+  });
+  
 module.exports = app;
