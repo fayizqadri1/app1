@@ -14,6 +14,7 @@ export class ViewOperationalstepsComponent implements OnInit {
   ) { }
 
   operational(value){
+    
     console.log(value)
     this.service.getOperationalSteps(value).subscribe((response)=>{
       console.log(response)

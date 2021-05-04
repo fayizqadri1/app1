@@ -1,5 +1,6 @@
+<app-navbar></app-navbar>
 <div class="container">
-    <app-navbar></app-navbar>
+    
     <br />
     <h2 class="text-primary text-center"> Operational Steps </h2>
     <br />
@@ -30,8 +31,8 @@
           
         </tr>
       </thead>
-      <tbody *ngFor="let d of viewoperationalSteps">
-        <tr>
+      <tbody >
+        <tr *ngFor="let d of viewoperationalSteps">
           <td>
             {{ d.bc | uppercase}}
           </td>
@@ -54,6 +55,7 @@
           </td>
           <td>
             {{ d.serviceplannedondateofreg |number}}
+            
           </td>
           
         </tr>

@@ -1,5 +1,6 @@
+<app-navbar></app-navbar>
 <div class="container">
-  <app-navbar></app-navbar>
+
     <br />
       <h2 class="text-primary text-center" >View Package</h2>
     <br />
@@ -9,28 +10,28 @@
       <tr>
         
         <th scope="col">Package ID</th>
-        <th scope="col">Package Name</th>
+        <th scope="col">Package</th>
         <th scope="col">Amount</th>
         <th scope="col">Days</th>
              <th>Status</th>
         
       </tr>
     </thead>
-    <tbody *ngFor="let d of viewpackage">
-        <tr>
+    <tbody>
+        <tr  *ngFor="let d of viewpackage">
             <td>
               
                {{d.packageid}}
               </td>
               <td>
-                {{d.packagename}}
+                {{d.packagename |titlecase}}
               </td>
               <td>
-                {{d.packageamount}}
+                {{d.packageamount |number}}
               </td>
 
               <td>
-                {{d.packagedays }}
+                {{d.packagedays|number}}
               </td>
           
                

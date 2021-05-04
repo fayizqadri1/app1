@@ -1,6 +1,6 @@
-
+<app-navbar></app-navbar>
 <div class="container">
-    <app-navbar></app-navbar>
+    <!-- <app-navbar></app-navbar> -->
       <br />
         <h2 class="text-primary text-center" >View Service Plan</h2>
   
@@ -21,17 +21,17 @@
         </tr>
       </thead>
    
-      <tbody *ngFor="let d of serviceplandetails">
-          <tr>
+      <tbody >
+          <tr *ngFor="let d of serviceplandetails">
               <td>             
                  {{d.monthplan}}
                 </td>
                 <td>
-                  {{d.careplan}}
+                  {{d.careplan |titlecase}}
   
                 </td>
                 <td>
-                  {{d.carecenter}}
+                  {{d.carecenter |titlecase}}
                 </td>
   
                 <td >{{d.planactive && 'Active' || 'Block'}}</td>

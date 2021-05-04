@@ -1,6 +1,6 @@
-
+<app-navbar></app-navbar>
 <div class="container">
-  <app-navbar></app-navbar>
+ 
     <br />
       <h2 class="text-primary text-center" >View Doctor List</h2>
 
@@ -20,20 +20,20 @@
       </tr>
     </thead>
  
-    <tbody *ngFor="let d of viewdoctor">
-        <tr>
+    <tbody >
+        <tr *ngFor="let d of viewdoctor">
             <td>             
                {{d.docid}}
               </td>
               <td>
-                {{d.docname}}
+                {{d.docname |titlecase}}
 
               </td>
               <td>
-                {{d.specialist}}
+                {{d.specialist |titlecase}}
               </td>
 
-              <td >{{d.active && 'Active' || 'Block'}}</td>
+              <td >{{d.active  && 'Active' || 'Block'}}</td>
 
             
              

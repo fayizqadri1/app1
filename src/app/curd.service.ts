@@ -1,3 +1,4 @@
+import { senData } from './models/data.model';
 import { take } from 'rxjs/operators';
 import { doctor } from './models/doctor.model';
 import { HttpClient } from '@angular/common/http';
@@ -202,4 +203,28 @@ export class CurdService {
   }
 
  
+
+  getcareCalendar(serviceid,memberid): Observable<any> {
+    const searchParams = {
+      params: {
+        memberid: memberid,
+        serviceid:serviceid
+      },
+    };
+    console.log('serviceid',serviceid,'memeid',memberid)
+    return this.http.get('http://localhost:3000/api/carecalendar',searchParams);
+  }
+  changeStatus(data: senData){
+    // const dataSent = {
+    //   params: {
+    //     memberid: memberid,
+    //     date:value,
+    //     data:data
+    //   },
+    // };
+    console.log(data)
+   return this.http.put<{message: string }>('http://localhost:3000/api/updatecarecalendar',data)
+    
+    
+  }
 }

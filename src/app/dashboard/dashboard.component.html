@@ -1,118 +1,118 @@
 <!-- <div class="container"> -->
-  <app-navbar></app-navbar>
-  <br />
+  <!-- <app-navbar></app-navbar> -->
+  <img src="../../assets/image001-1.jpg" class="img-fluid"  alt="Responsive image">
+  <br>
+  <br>
+  <br>
   <h2 class="text-primary text-center">Dashboard</h2>
-  <br />
+
   <div class="row">
-    <div class="col-sm-4">
-      <div class="card" routerLink="/memberform" style="width: 18rem">
+    <div class="col-sm-6">
+      <div class="card"  style="width: 22rem">
         <div class="card-body">
-          <h5 class="card-title">Add Members</h5>
-          <a routerLink="/memberform" class="card-link">Add Members</a>
+          <h5 class="card-title">Members</h5>
+          <a routerLink="/memberform" class="card-link">Add Member</a>
+          <a routerLink="/viewmember"style="margin-left: 5.5rem;" class="card-link">View Member</a>
         </div>
       </div>
     </div>
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem">
-        <div class="card-body" routerLink="/adddoctor" ś="ś">
-          <h5 class="card-title">Add Doctors</h5>
+    
+    <div class="col-sm-6">
+      <div class="card" style="width: 22rem">
+        <div class="card-body" ś="ś">
+          <h5 class="card-title">Doctor</h5>
           <a routerLink="/adddoctor" class="card-link">Add Doctors</a>
+          <a routerLink="/viewdoctor" style="margin-left: 5.5rem;" >View Doctor</a>
         </div>
       </div>
     </div>
-    <div class="col-sm-4">
-      <div class="card" routerLink="/package" style="width: 18rem">
-        <div class="card-body">
-          <h5 class="card-title">Create Packages</h5>
-          <a routerLink="/package" class="card-link">Create Package</a>
-        </div>
-      </div>
-    </div>
+    
   </div>
 
   <div class="row">
-   
-    <div class="col-sm-4">
-      <div class="card" style="width: 18rem">
-        <div class="card-body" routerLink="/bookappointment">
-          <h5 class="card-title">Book Appointment</h5>
-          <a routerLink="/bookappointment" class="card-link">BookAppointment</a>
+  
+      <div class="col-sm-6">
+        <div class="card" routerLink="/package" style="width: 22rem">
+          <div class="card-body">
+            <h5 class="card-title"> Packages</h5>
+            <a routerLink="/package" class="card-link">Create Package</a>
+            <a routerLink="/viewpackage"style="margin-left: 5rem;" class="card-link">View Package</a>
+          </div>
         </div>
       </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" routerLink="/viewappointment" style="width: 18rem">
-        <div class="card-body">
-          <h5 class="card-title">View Appointment</h5>
-          <a routerLink="/viewappointment" class="card-link"
+
+      <div class="col-sm-6">
+        <div class="card" style="width: 22rem">
+          <div class="card-body" >
+            <h5 class="card-title">Appointment</h5>
+            <a routerLink="/bookappointment" class="card-link">Book Appointment</a>
+            <a routerLink="/viewappointment" style="margin-left: 3rem;"class="card-link"
             >View Appointment</a
           >
+          </div>
         </div>
       </div>
+  
     </div>
-    <div class="col-sm-4">
-      <div class="card" routerLink="/viewmember" style="width: 18rem">
-        <div class="card-body">
-          <h5 class="card-title">View Member</h5>
-          <a routerLink="/viewmember" class="card-link">View Member</a>
-        </div>
-      </div>
-    </div>
-  </div>
+   
+ 
+
+    
+
 
  
   <div class="row">
-    <div class="col-sm-4">
-      <div class="card" routerLink="/viewdoctor" style="width: 18rem">
+   
+  
+    
+    <div class="col-sm-6">
+      <div class="card" routerLink="/serviceplan" style="width: 22rem">
         <div class="card-body">
-          <h5 class="card-title">View Doctor</h5>
-          <a routerLink="/viewdoctor" class="card-link">View Doctor</a>
+          <h5 class="card-title" >Service </h5>
+          <a routerLink="/serviceplan" class="card-link"> Create Service Plan</a>
+       
+          <a routerLink="/viewserviceplan"style="margin-left: 3.5rem;" class="card-link">View Service Plan</a>
+          
         </div>
       </div>
     </div>
-
-    <div class="col-sm-4">
-      <div class="card" routerLink="/viewpackage" style="width: 18rem">
-        <div class="card-body">
-          <h5 class="card-title">View Package</h5>
-          <a routerLink="/viewpackage" class="card-link">View Package</a>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-4">
-      <div class="card" routerLink="/serviceplan" style="width: 18rem">
-        <div class="card-body">
-          <h5 class="card-title">Service Plan</h5>
-          <a routerLink="/serviceplan" class="card-link">Service Plan</a>
-        </div>
+  
+  <div class="col-sm-4">
+    <div class="card" style="width: 22rem">
+      <div class="card-body">
+        <h5 class="card-title">Operational Step</h5>
+        <a routerLink="/operationalstep" class="card-link"> Operational Steps</a>
+        <a routerLink="/viewoperationalsteps" style="margin-left: 2rem;"class="card-link">View Operational Steps</a>
       </div>
     </div>
   </div>
+  </div>
 <!-- </div> -->
-<div class="row">
+<!-- <div class="row">
+  <div class="col-sm-4">
+    <div class="card" routerLink="/viewappointment" style="width: 18rem">
+      <div class="card-body">
+        <h5 class="card-title">View Appointment</h5>
+       
+      </div>
+    </div>
+  </div>
   <div class="col-sm-4">
     <div class="card" routerLink="/viewserviceplan" style="width: 18rem">
       <div class="card-body">
         <h5 class="card-title">View Service Plan</h5>
-        <a routerLink="/viewserviceplan" class="card-link">View Service Plan</a>
+      
       </div>
     </div>
   </div>
 
-  <div class="col-sm-4">
-    <div class="card" routerLink="/operationalstep" style="width: 18rem">
-      <div class="card-body">
-        <h5 class="card-title">Operational Steps</h5>
-        <a routerLink="/operationalstep" class="card-link"> Operational Steps</a>
-      </div>
-    </div>
-  </div>
+  
   <div class="col-sm-4">
     <div class="card" routerLink="/viewoperationalsteps" style="width: 18rem">
       <div class="card-body">
         <h5 class="card-title">View Operational Steps</h5>
-        <a routerLink="/viewoperationalsteps" class="card-link">View Operational Steps</a>
+      
       </div>
     </div>
   </div>
-</div>
+</div> -->

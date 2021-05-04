@@ -1,9 +1,10 @@
+<app-navbar></app-navbar>
 <div class="container">
-  <app-navbar></app-navbar>
+  <!-- <app-navbar></app-navbar> -->
     <br />
       <h2 class="text-primary text-center" >View Member</h2>
     <br />
-
+    <div class="box-shadow-2" style="background-color: white">
 <table class="table table-striped table-bordered">
     <thead>
       <tr>
@@ -13,42 +14,45 @@
         <th scope="col">Gender</th>
         <th scope="col">DOB</th>
         <th scope="col">Phone Number</th>
-        <th>Package Name</th>
+        <th>Package</th>
+        <th>Service Plan</th>
         <th>Date of Joining</th>
         <th>Status</th>
         <th></th>
         
       </tr>
     </thead>
-    <tbody *ngFor="let d of viewmember">
-        <tr>
+    <tbody >
+        <tr *ngFor="let d of viewmember">
             <td>
               
                {{d.memid}}
               </td>
               <td>
-                {{d.membername}}
+                {{d.membername |titlecase}}
               </td>
               <td>
-                {{d.gender}}
+                {{d.gender |titlecase}}
               </td>
 
               <td>
                 {{d.birth_date |date}}
               </td>
               <td>
-                {{d.phonenumber}}
+                {{d.phonenumber }}
               </td>
-              <td>{{d.packagename}}</td>
-              <td>{{d.memcreated_on | date}}</td>
+              <td>{{d.packagename |titlecase}}</td>
+              <td>{{d.serviceplanid}}</td>
+              <td>{{d.memcreated_on | date :'dd/MM/yyyy'}}</td>
 
               <td >{{d.memactive && 'Active' || 'Block'}}</td>
               <td>
-                <a routerLink="/carecalender">Care Calender</a>
+                <a routerLink="/carecalender" (click)="getmemberid(d.memid,d.serviceplanid)">Care Calender</a>
               </td>
 
         </tr>
       
     </tbody>
   </table>
+  </div>
 </div>

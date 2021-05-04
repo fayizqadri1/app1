@@ -1,6 +1,7 @@
 import { CurdService } from './../curd.service';
 import { Component, OnInit } from '@angular/core';
 import { take } from 'rxjs/operators';
+import { CommonServiceService } from '../common-service.service';
 
 @Component({
   selector: 'app-view-member',
@@ -9,8 +10,14 @@ import { take } from 'rxjs/operators';
 })
 export class ViewMemberComponent implements OnInit {
   viewmember;
-  constructor(private service: CurdService) { }
-
+  constructor(private service: CurdService,
+    private commonservice: CommonServiceService
+    ) { }
+getmemberid(memberID,servicePlan)
+{
+   this.commonservice.memberid=memberID;
+   this.commonservice.memberServicePlan=servicePlan;
+}
   ngOnInit(): void {
     this.service.viewMember().pipe(take(1))
         .subscribe((response)=>{

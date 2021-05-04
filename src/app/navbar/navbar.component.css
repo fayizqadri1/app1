@@ -1,0 +1,16 @@
+.img-fluid{
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+    margin-top: 10px;
+}
+.img { 
+    width: 100%;
+    height: auto;
+    opacity: 0.3;
+   
+  }
+  .btn.btn-outline-secondary{
+      margin-left: 50px;
+  }

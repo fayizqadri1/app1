@@ -7,3 +7,21 @@
     margin-right: 105px;
    
 }
+.card-title{
+    text-align: center;
+    font-size: 18px;
+    display: block;
+}
+.img-fluid{
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+    margin-top: 10px;
+}
+.img { 
+    width: 100%;
+    height: auto;
+    opacity: 0.3;
+   
+  }

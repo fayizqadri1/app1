@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express(); //handling a request for single spl path only
 const bodyParser = require("body-parser");
-
+const cors = require('cors')
 app.use(bodyParser.json());
 
 const { Pool } = require("pg");
+const { data } = require("jquery");
 const pool = new Pool({
   user: "postgres",
   host: "localhost",
@@ -12,24 +13,26 @@ const pool = new Pool({
   password: "12345",
   port: 5432,
 });
+app.use(cors())
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader(
+//     "Access-Control-Allow-Headers",
+//     "Origin, X-Requpested-With,Content-Type,Accept"
+//   );
+//   res.setHeader(
+//     "Access-Control-Allow-Methods",
+//     "GET",
+//     "POST",
+//     "PATCH",
+//     "DELETE",
+//     "OPTIONS",
+//     "PUT"
+//   );
+//   next();
+// });
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requpested-With,Content-Type,Accept"
-  );
-  res.setHeader(
-    "Access-Control-Allow-Methods",
-    "GET",
-    "POST",
-    "PATCH",
-    "DELETE",
-    "OPTIONS"
-  );
-  next();
-});
-
+app.use
 //use a middleware on our app and on in oming requests
 app.post("/api/adddoctor", (req, res) => {
   const doctor = req.body;
@@ -126,25 +129,78 @@ app.post("/api/addmember", (req, res) => {
   const package = req.body;
   console.log(package);
   try {
+    const mmemid=req.body.memid
     const membername = req.body.memName;
     const memebergender = req.body.gender;
     const memberdob = req.body.dob;
     const phoneno = req.body.phone;
     const packageid = req.body.packageid;
+    const sserviceplanid= req.body.serviceplanid;
 
     const newdoctor = pool
       .query(
-        "INSERT INTO  memberviewone (packageid,membername,gender,birth_date,phoneNumber) VALUES ($1,$2,$3,$4,$5) RETURNING *",
-        [packageid, membername, memebergender, memberdob, phoneno]
+        "INSERT INTO  memberviewone (memid,packageid,membername,gender,birth_date,phoneNumber,serviceplanid) VALUES ($1,$2,$3,$4,$5,$6,$7) RETURNING *",
+        [mmemid,packageid, membername, memebergender, memberdob, phoneno,sserviceplanid]
       )
 
-      .then(() => {
-        console.log("inserted");
-        res.status(201).json({
-          message: "Member Has Been Added",
-        });
-      })
-      .catch(() => {
+      .then(()=>{
+        console.log("ist")
+        if(sserviceplanid==1){
+        pool.query (String(`INSERT INTO membercarecalendardetails (memid, serviceplanid, activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,schedule) SELECT ${mmemid}, ${sserviceplanid}, activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,memcreated_on + interval '1' day * serviceplannedondateofreg as schedule FROM operationalsteps cross join memberviewone where memid= ${mmemid} and operationalsteps.serviceplanid= ${sserviceplanid}`))
+        .then(()=>{
+          console.log('2nd')
+          res.status(201).json({
+            
+            message: "Member Has Been Added",
+          });
+
+        }) .catch((e) => {
+          console.log(e)
+          return res.status(201).json({
+            message: "There is an error!",
+          });
+        }); 
+      }else if(sserviceplanid==2){
+
+        pool.query (String(`INSERT INTO membercarecalendardetails (memid, serviceplanid, activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,schedule) SELECT ${mmemid}, ${sserviceplanid}, activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,memcreated_on + interval '1' day * serviceplannedondateofreg as schedule FROM operationalsteps cross join memberviewone where memid= ${mmemid} and operationalsteps.serviceplanid in (1,2)`))
+        .then(()=>{
+          console.log('2nd')
+          res.status(201).json({
+            
+            message: "Member Has Been Added",
+          });
+
+        }) .catch((e) => {
+          console.log(e)
+          return res.status(201).json({
+            message: "There is an error!",
+          });
+        }); 
+      
+      }
+      else if(sserviceplanid==3){
+
+        pool.query (String(`INSERT INTO membercarecalendardetails (memid, serviceplanid, activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,schedule) SELECT ${mmemid}, ${sserviceplanid}, activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,memcreated_on + interval '1' day * serviceplannedondateofreg as schedule FROM operationalsteps cross join memberviewone where memid= ${mmemid} and operationalsteps.serviceplanid in (1,2,3)`))
+        .then(()=>{
+          console.log('2nd')
+          res.status(201).json({
+            
+            message: "Member Has Been Added",
+          });
+
+        }) .catch((e) => {
+          console.log(e)
+          return res.status(201).json({
+            message: "There is an error!",
+          });
+        }); 
+      
+      }
+        })
+        
+    
+      .catch((e) => {
+        console.log(e)
         return res.status(201).json({
           message: "There is an error!",
         });
@@ -209,7 +265,7 @@ app.get("/api/getappointment", (req, res) => {
 app.get("/api/viewmember", (req, res) => {
   try {
     const getdoc = pool.query(
-      "select memid, membername,gender,birth_date,memcreated_on,memActive,phonenumber, packagename from memberviewone inner join packageview on memberviewone.packageid=packageview.packageid order by memid ",
+      "select memid, membername,gender,birth_date,memcreated_on,memActive,phonenumber,serviceplanid, packagename from memberviewone inner join packageview on memberviewone.packageid=packageview.packageid order by memid ",
       (error, data) => {
         if (error) {
           throw error;
@@ -260,7 +316,7 @@ app.post("/api/addserviceplan", (req, res) => {
       .then(() => {
         console.log("inserted");
         res.status(201).json({
-          message: "Serice Has Been Added",
+          message: "Service Has Been Added",
         });
       })
       .catch(() => {
@@ -311,7 +367,7 @@ app.post("/api/addoperationalsteps", (req, res) => {
       .then(() => {
         console.log("inserted");
         res.status(201).json({
-          message: "Serice Has Been Added",
+          message: "Service Has Been Added",
         });
       })
       .catch(() => {
@@ -329,10 +385,11 @@ app.post("/api/addoperationalsteps", (req, res) => {
   app.get("/api/getOperationalSteps", (req, res) => {
     const id = req.query.servicepid;
     console.log(id);
+    
   
     try {
       const getdoc = pool.query(
-        String(`SELECT * from operationalsteps where serviceplanid=${id}`),
+        String(`SELECT * from operationalsteps where serviceplanid=${id} and serviceplan=1`),
         (error, data) => {
           if (error) {
             throw error;
@@ -343,4 +400,129 @@ app.post("/api/addoperationalsteps", (req, res) => {
     } catch (error) {}
   });
   
+
+  
+app.get("/api/carecalendar", (req, res) => {
+  const memberid = req.query.memberid;
+  const serviceid=req.query.serviceid;
+  console.log(serviceid)
+  try {
+    if(serviceid==1){
+    const getdoc = pool.query(
+      String(`select opid ,serviceplanid,activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,schedule,status from membercarecalendardetails where serviceplanid= 1 and memid=${memberid}  order by opid`),
+      (error, data) => {
+        if (error) {
+          throw error;
+        }
+        //console.log(data)
+        return res.status(200).json(data);
+      }
+    );
+  } 
+
+else if(serviceid==2){
+  const getdoc = pool.query(
+    String(`select opid ,activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,schedule,status from membercarecalendardetails where memid=${memberid} and serviceplanid in (1,2) order by opid`),
+    (error, data) => {
+      if (error) {
+        throw error;
+      }
+      //console.log(data)
+      return res.status(200).json(data);
+    }
+  );
+} 
+else if(serviceid==3){
+  const getdoc = pool.query(
+    String(`select opid ,activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,schedule,status from membercarecalendardetails where memid=${memberid} and serviceplanid in (1,2,3) order by opid`),
+    (error, data) => {
+      if (error) {
+        throw error;
+      }
+      console.log(data)
+      return res.status(200).json(data);
+    }
+  );
+} 
+
+ } catch (error) {}
+
+});
+
+
+app.post("/api/addmembercarecalendar", (req, res) => {
+  const package = req.body;
+  console.log(package);
+  try {
+    const memid=req.body.memid;
+    const membername = req.body.memName;
+    const memebergender = req.body.gender;
+    const memberdob = req.body.dob;
+    const phoneno = req.body.phone;
+    const packageid = req.body.packageid;
+    //const se
+    const newdoctor = pool
+      .query(
+        "INSERT INTO  memberviewone (memid,packageid,membername,gender,birth_date,phoneNumber) VALUES ($1,$2,$3,$4,$5) RETURNING *",
+        [memid,packageid, membername, memebergender, memberdob, phoneno]
+      )
+
+      .then(() => {
+        console.log("inserted");
+        pool.query("INSERT INTO membercarecalendardetails (memid, serviceplanid, activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,schedule)SELECT memid, serviceplanid, activites,bc,pcm,substeps,howitisperformed,deliverables,serviceplannedondateofreg,memcreated_on + interval '1' day * serviceplannedondateofreg as shedule FROM operationalsteps cross join memberviewone")
+        .then(()=>{
+          res.status(201).json({
+            message: "Member Has Been Added",
+          });
+        })
+        
+      })
+      .catch(() => {
+        return res.status(201).json({
+          message: "There is an error!",
+        });
+      });
+  } catch (err) {
+    console.log(err.message);
+  }
+});
+
+
+app.put("/api/updatecarecalendar", (req, res) => {
+  const package = req.body;
+  console.log(package.status);
+  const memid =req.body.memberid;
+    var date= req.body.getdate;
+   const data =req.body.status;
+    console.log('id',memid,date,data)
+    console.log('date',date)
+    console.log('data',data)
+
+
+  try {
+
+   const newdoctor = pool
+     .query(String(`UPDATE membercarecalendardetails SET status = '${data}' WHERE memid = ${memid} and opid=${date}`
+     )).then(() => {
+       console.log("inserted");
+       res.status(201).json({
+         message: " Status has been Updated",
+       });
+     })
+     .catch((e) => {
+//console.log(e)
+       return res.status(201).json({
+         message: "There is an error!",
+       });
+     });
+     
+ } catch (err) {
+   console.log(err.message);
+ }
+ 
+});
+
+
+
+
 module.exports = app;

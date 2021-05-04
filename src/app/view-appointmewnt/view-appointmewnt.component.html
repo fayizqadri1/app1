@@ -1,5 +1,6 @@
+<app-navbar></app-navbar>
 <div class="container">
-  <app-navbar></app-navbar>
+
   <br />
   <h2 class="text-primary text-center">View appointment</h2>
   <br />
@@ -17,13 +18,13 @@
         <th>Package Name</th>
       </tr>
     </thead>
-    <tbody *ngFor="let d of viewappointment">
-      <tr>
+    <tbody >
+      <tr *ngFor="let d of viewappointment">
         <td>
           {{ d.appointmentid }}
         </td>
         <td>
-          {{ d.membername }}
+          {{ d.membername |titlecase}}
         </td>
         <td>
           {{ d.birth_date | date }}
@@ -36,13 +37,13 @@
           {{ d.phonenumber }}
         </td>
 
-        <td>{{ d.docname }} ({{ d.specialist }})</td>
+        <td>{{ d.docname |titlecase}} ({{ d.specialist |titlecase}})</td>
 
         <td>
           {{ d.duration }}
         </td>
         <td>
-          {{ d.packagename }}
+          {{ d.packagename |titlecase}}
         </td>
       
       </tr>

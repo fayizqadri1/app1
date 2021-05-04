@@ -1,9 +1,22 @@
+<app-navbar></app-navbar>
 <div class="container">
-  <app-navbar></app-navbar>
+
     <br />
       <h2 class="text-primary text-center" >Member Registration</h2>
     <br />
     <form class="form-style" #regmember="ngForm" (ngSubmit)="addmember(regmember)">
+      <div class="form-group">
+        <label for="username">Member Id</label>
+        <input
+          type="text"
+          class="form-control"
+          name="memid"
+          (input)="getmemberid($event.target.value)"
+          ngModel
+          required
+          placeholder="Enter Member Id"
+        />
+      </div>
       <div class="form-group">
         <label for="">Name</label>
         <input
@@ -32,6 +45,16 @@
         >
             <option value="" >Choose</option>
             <option [value]="d.packageid" *ngFor="let d of pack ">{{ d.packagename | titlecase }}</option>
+            
+          </select>
+      </div>
+      <div class="form-group" >
+        <label for="">Service Plan</label>
+        <select class="custom-select" name="serviceplanid" ngModel 
+        #operationalvalue="ngModel" 
+        >
+            <option value="" >Choose</option>
+            <option [value]="d.monthplan" *ngFor="let d of serviceplan ">{{ d.careplan | titlecase }}</option>
             
           </select>
       </div>
